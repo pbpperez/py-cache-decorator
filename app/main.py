@@ -7,7 +7,7 @@ def cache(func: Callable) -> Callable:
 
     @wraps(func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:
-        # Creamos una clave única e inmutable para los argumentos y kwargs ordenados
+        # Create a unique immutable key for args and kwargs
         key = (args, tuple(sorted(kwargs.items())))
 
         if key in memo:
