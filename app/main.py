@@ -8,7 +8,9 @@ def cache(func: Callable) -> Callable:
     @wraps(func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         # Create a unique immutable key for args and kwargs
-        key = (args, tuple(sorted(kwargs.items())))
+        key = (args, tuple(sorted(list(kwargs.items()))))
+
+
 
         if key in memo:
             print("Getting from cache")
